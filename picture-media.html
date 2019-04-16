@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <!-- viewport meta tag 이니셜 스케일 : 초기배율, 미니멈 스케일, 맥스 스케일, 유저 스케일  -->
+    <!-- device-width : 디바이스이 width 값만큼 할당하겠다. -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>srcset 속성</title>
+    <style>
+        /* 콘텐츠 이미지 방법 html의 이미지를 넣음. */
+        /* 뷰포트에 따른 */
+
+        .rwd-wrapper {
+            width: 50%;
+            border: 5px solid blue;
+        }
+
+        /* 반응형 이미지 css 모듈 */
+        .rwd-img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="rwd-wrapper">
+        <picture>
+            <source media="(max-width:650px)" srcset="images/small.jpg">
+            <source media="(min-width:651px) and (max-width: 999px)" srcset="images/medium.jpg">
+            <source media="(min-width:1000px)" srcset="images/large.jpg">
+            <img class="rwd-img" src="images/normal.jpg" alt="">
+        </picture>
+    </div>
+</body>
+</html>

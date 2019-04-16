@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>반응형 배경 이미지</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .wrapper {
+            width: 50%;
+        }
+
+        .rwd-bg {
+            /* border: 5px solid #000; */
+            position: relative;
+            width: 100%;
+            height: 0 !important;
+            /* 원본 이미지 비율(너비 x 높이)를 유지하기 위해서 높이를 padding을 이용해서 준다. */
+            /* padding trick , iframe에서도 사용한다. */
+            /* 이미지 규격에 따라 padding 값을 바꿔치기 한다. */
+            padding-top: calc(3280 / 4928 * 100%);
+            background: url("images/unsplash.jpg") no-repeat 0 0;
+            /* background-size: 100% 100%; */
+            /* cover 와 contain의 차이 */
+            /* contain 가로든 세로든 부모박스 안에서 전체 이미지를 보여준다. */
+            background-size: cover;
+        }
+
+        /* 투명 셀로판지가 가리고 있는 느낌 */
+        /* .rwd-bg의 첫번째 자식 노드 생성  */
+        .rwd-bg::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,0, 0.3);
+        }
+
+        @media all and (min-resolution: 192dpi){
+            .rwd-bg {
+                background: url("images/unsplash2.jpg");
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="rwd-bg"></div>
+    </div>
+
+    <a href="https://css-tricks.com/almanac/properties/b/background-size/">css-tricks article</a>
+</body>
+</html>
